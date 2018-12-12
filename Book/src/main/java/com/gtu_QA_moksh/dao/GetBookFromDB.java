@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
 import com.gtu_QA_moksh.vo.BookData;
 
 public class GetBookFromDB {
@@ -47,7 +48,7 @@ public class GetBookFromDB {
 		return listOfAllBook;
 	}
 	
-	public BookData getBookById(double bookId) {
+	public BookData getBookById(double bookId) {      // when more Info is clicked
 		BookData data = new BookData();
 		Connection con = null;
 		Statement stm = null;
@@ -76,5 +77,55 @@ public class GetBookFromDB {
 		}
 		
 		return data;
+	}
+	
+	public ArrayList<BookData> getAllBooksOfUser(double userId){
+		ArrayList<BookData> allBooksOfUser = new ArrayList<BookData>();
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		String sql="select * from book_data where idOfUser="+userId;
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager.getConnection(url, user, pass);
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery(sql);
+			
+			while(resultSet.next()) {
+				BookData data = new BookData();
+				data.setTitle(resultSet.getString("title"));
+				data.setAuthor(resultSet.getString("author"));
+				data.setPubYear(resultSet.getString("pubYear"));
+				data.setAdditionalInfo(resultSet.getString("additionalInfo"));
+				data.setBookCondition(resultSet.getString("bookCondition"));
+				data.setAddress(resultSet.getString("address"));
+				data.setId(resultSet.getDouble("id"));
+				data.setIdOfUser(resultSet.getDouble("idOfUser"));
+				
+				allBooksOfUser.add(data);
+			}
+			
+		}catch (Exception e) {
+			System.out.println("getAllBooks Method "+e);
+		}
+		
+		return allBooksOfUser;
+	}
+	
+	public void removeBookById(double bookId){
+		Connection connection = null;
+		Statement statement = null;
+		String sql="Delete from book_data where id="+bookId;
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			connection = DriverManager.getConnection(url, user, pass);
+			statement = connection.createStatement();
+			statement.executeUpdate(sql);
+			
+		}catch (Exception e) {
+			System.out.println("removeBookById Method "+e);
+		}
 	}
 }

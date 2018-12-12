@@ -18,8 +18,18 @@ public class BookService {
 		return db.getAllBooks();
 	}
 	
+	public ArrayList<BookData> getAllBooksFromDb(double userId){
+		GetBookFromDB db = new GetBookFromDB();
+		return db.getAllBooksOfUser(userId);
+	}
+	
 	public BookData getBookDetails(double bookId) {
 		GetBookFromDB db = new GetBookFromDB();
 		return db.getBookById(bookId);
+	}
+	
+	public void removeBookFromDbById(double bookId) {
+		GetBookFromDB db = new GetBookFromDB();
+		db.removeBookById(bookId);
 	}
 }
