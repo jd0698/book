@@ -2,6 +2,7 @@ package com.gtu_QA_moksh.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 import com.gtu_QA_moksh.vo.UserData;
@@ -24,6 +25,13 @@ public class RegisterUserDB {
 			stm.execute(sql);
 		}catch(Exception e) {
 			System.out.println("dao registerUser method "+e);
+		}finally {
+			try {
+				stm.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

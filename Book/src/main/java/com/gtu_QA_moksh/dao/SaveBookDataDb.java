@@ -25,6 +25,13 @@ public class SaveBookDataDb {
 			System.out.println("saveBookData method"+ e);
 		}catch (ClassNotFoundException e) {
 			System.out.println("saveBookData method"+ e);
+		}finally {
+			try {
+				stm.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }

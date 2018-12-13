@@ -2,6 +2,7 @@ package com.gtu_QA_moksh.dao;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Connection;
 
@@ -32,6 +33,14 @@ public class VerifyDB {
 			}
 		}catch(Exception e) {
 			System.out.println("dao verify method "+e);
+		}finally {
+			try {
+				rs.close();
+				stm.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return verify;
@@ -65,6 +74,14 @@ public class VerifyDB {
 			}
 		}catch(Exception e) {
 			System.out.println("dao verify method "+e);
+		}finally {
+			try {
+				rs.close();
+				stm.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return data;

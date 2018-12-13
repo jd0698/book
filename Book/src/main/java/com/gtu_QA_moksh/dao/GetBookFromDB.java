@@ -3,6 +3,7 @@ package com.gtu_QA_moksh.dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ public class GetBookFromDB {
 	private String user="root";
 	private String pass="root";
 	
-	public ArrayList<BookData> getAllBooks(){		
+	public ArrayList<BookData> getAllBooks() {		
 		ArrayList<BookData> listOfAllBook = new ArrayList<BookData>();
 		Connection con = null;
 		Statement stm = null;
@@ -37,12 +38,19 @@ public class GetBookFromDB {
 				data.setAddress(rs.getString("address"));
 				data.setId(rs.getDouble("id"));
 				data.setIdOfUser(rs.getDouble("idOfUser"));
-				
 				listOfAllBook.add(data);
 			}
 			
 		}catch (Exception e) {
 			System.out.println("getAllBooks Method "+e);
+		}finally {
+			try {
+				rs.close();
+				stm.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return listOfAllBook;
@@ -74,6 +82,14 @@ public class GetBookFromDB {
 			
 		}catch (Exception e) {
 			System.out.println("getAllBooks Method "+e);
+		}finally {
+			try {
+				rs.close();
+				stm.close();
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return data;
@@ -108,6 +124,14 @@ public class GetBookFromDB {
 			
 		}catch (Exception e) {
 			System.out.println("getAllBooks Method "+e);
+		}finally {
+			try {
+				resultSet.close();
+				statement.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		return allBooksOfUser;
@@ -126,6 +150,13 @@ public class GetBookFromDB {
 			
 		}catch (Exception e) {
 			System.out.println("removeBookById Method "+e);
+		}finally {
+			try {
+				statement.close();
+				connection.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
