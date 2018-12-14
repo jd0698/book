@@ -8,7 +8,7 @@ import java.sql.Connection;
 import com.gtu_QA_moksh.vo.BookData;
 
 public class SaveBookDataDb {
-	private String url="jdbc:mysql://localhost/gtu_qa";
+	private String url="jdbc:mysql://localhost/bookexchange";
 	private String user="root";
 	private String password="root";
 	public void saveBookData(BookData data) {

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import com.gtu_QA_moksh.vo.BookData;
 
 public class GetBookFromDB {
-	private String url="jdbc:mysql://localhost/gtu_qa";
+	private String url="jdbc:mysql://localhost/bookexchange";
 	private String user="root";
 	private String pass="root";
 	

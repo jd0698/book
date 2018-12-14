@@ -10,7 +10,7 @@ import com.gtu_QA_moksh.vo.AdminData;
 import com.gtu_QA_moksh.vo.UserData;
 
 public class VerifyDB {
-	String url="jdbc:mysql://localhost/gtu_qa";
+	String url="jdbc:mysql://localhost/bookexchange";
 	String user="root";
 	String password="root";
 	

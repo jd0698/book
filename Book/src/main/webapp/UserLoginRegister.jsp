@@ -14,7 +14,7 @@ Enter password:<input type="password" name="password"></input><br>
 <input type="submit" value="Log In"></input>
 </form>
 
-<br><br><br><br><br><br>
+<br><br><br><br><br><br> 
 
 <form action="registerUser" method="post">
 <!-- <input type="hidden" name="pageKey" value="UserLoginRegister"/> -->

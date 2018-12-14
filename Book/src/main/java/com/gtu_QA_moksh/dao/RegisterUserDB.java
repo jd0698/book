@@ -9,7 +9,7 @@ import com.gtu_QA_moksh.vo.UserData;
 
 public class RegisterUserDB {
 	
-	String url="jdbc:mysql://localhost/gtu_qa";
+	String url="jdbc:mysql://localhost/bookexchange";
 	String user="root";
 	String password="root";
 	public void registerUser(UserData data) {
