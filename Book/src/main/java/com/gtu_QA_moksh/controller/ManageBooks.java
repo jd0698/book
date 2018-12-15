@@ -34,7 +34,7 @@ public class ManageBooks {
 	@RequestMapping(value="removeBook")
 	public ModelAndView updateBookData(HttpSession session , HttpServletRequest request) {
 		ModelAndView mv = null;
-		double bookId = Double.parseDouble(request.getParameter("idOfBook"));
+		int bookId = Integer.parseInt(request.getParameter("idOfBook"));
 		
 		BookService bookService = new BookService();
 		bookService.removeBookFromDbById(bookId);

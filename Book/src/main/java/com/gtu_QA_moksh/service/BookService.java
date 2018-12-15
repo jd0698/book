@@ -18,7 +18,7 @@ public class BookService {
 		return db.getAllBooks();
 	}
 	
-	public ArrayList<BookData> getAllBooksFromDb(double userId){
+	public ArrayList<BookData> getAllBooksFromDb(int userId){
 		GetBookFromDB db = new GetBookFromDB();
 		return db.getAllBooksOfUser(userId);
 	}
@@ -28,7 +28,7 @@ public class BookService {
 		return db.getBookById(bookId);
 	}
 	
-	public void removeBookFromDbById(double bookId) {
+	public void removeBookFromDbById(int bookId) {
 		GetBookFromDB db = new GetBookFromDB();
 		db.removeBookById(bookId);
 	}

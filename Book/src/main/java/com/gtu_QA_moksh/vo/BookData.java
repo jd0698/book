@@ -1,8 +1,16 @@
 package com.gtu_QA_moksh.vo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class BookData {
-	private double id;
-	private double idOfUser;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	private int idOfUser;
 	private String title;
 	private String author;
 	private String pubYear;
@@ -10,16 +18,16 @@ public class BookData {
 	private	String bookCondition;
 	private String address;
 	
-	public double getIdOfUser() {
+	public int getIdOfUser() {
 		return idOfUser;
 	}
-	public void setIdOfUser(double idOfUser) {
+	public void setIdOfUser(int idOfUser) {
 		this.idOfUser = idOfUser;
 	}
-	public double getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(double id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getTitle() {

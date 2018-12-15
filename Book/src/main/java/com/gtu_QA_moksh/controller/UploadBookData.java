@@ -28,7 +28,7 @@ public class UploadBookData {
 		bookData.setAdditionalInfo(request.getParameter("additionalInfo"));
 		bookData.setBookCondition(request.getParameter("bookCondition"));
 		bookData.setAddress(request.getParameter("address"));
-		bookData.setIdOfUser(Double.parseDouble(request.getParameter("idOfUser")));
+		bookData.setIdOfUser(Integer.parseInt(request.getParameter("idOfUser")));
 		
 		BookService service = new BookService();
 		service.saveBookData(bookData);

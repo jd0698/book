@@ -1,19 +1,19 @@
 package com.gtu_QA_moksh.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 
 import com.gtu_QA_moksh.vo.UserData;
 
 public class RegisterUserDB {
 	
-	String url="jdbc:mysql://localhost/bookexchange";
+	/*String url="jdbc:mysql://localhost/bookexchange";
 	String user="root";
-	String password="root";
+	String password="root";*/
 	public void registerUser(UserData data) {
-		Connection  con=null;
+		/*Connection  con=null;
 		Statement stm=null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -32,6 +32,12 @@ public class RegisterUserDB {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		}
+		}*/
+		Configuration con = new Configuration().configure().addAnnotatedClass(UserData.class);
+		SessionFactory sf = con.buildSessionFactory();
+		Session session = sf.openSession();
+		Transaction transaction = session.beginTransaction();
+		session.save(data);
+		transaction.commit();
 	}
 }

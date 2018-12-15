@@ -1,16 +1,24 @@
 package com.gtu_QA_moksh.vo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class UserData {
-	private double id;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	private String firstName;
 	private String lastName;
 	private String email;
 	private long number;
 	private String password;
-	public double getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(double id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getFirstName() {

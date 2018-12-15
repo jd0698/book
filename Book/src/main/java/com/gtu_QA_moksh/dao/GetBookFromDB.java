@@ -1,22 +1,33 @@
 package com.gtu_QA_moksh.dao;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
 import com.gtu_QA_moksh.vo.BookData;
 
 public class GetBookFromDB {
-	private String url="jdbc:mysql://localhost/bookexchange";
+	/*private String url="jdbc:mysql://localhost/bookexchange";
 	private String user="root";
-	private String pass="root";
+	private String pass="root";*/
 	
 	public ArrayList<BookData> getAllBooks() {		
 		ArrayList<BookData> listOfAllBook = new ArrayList<BookData>();
+		Configuration con = new Configuration().configure().addAnnotatedClass(BookData.class);
+		SessionFactory sf = con.buildSessionFactory();
+		Session session = sf.openSession();
+		Transaction tran = session.beginTransaction();
+		Query query = session.createQuery("From BookData");
+		listOfAllBook = (ArrayList<BookData>)query.list();
+		tran.commit();
+		session.close();
+		return listOfAllBook;
+		/*
 		Connection con = null;
 		Statement stm = null;
 		ResultSet rs = null;
@@ -52,12 +63,25 @@ public class GetBookFromDB {
 				e.printStackTrace();
 			}
 		}
-		
-		return listOfAllBook;
+		*/
 	}
 	
 	public BookData getBookById(double bookId) {      // when more Info is clicked
-		BookData data = new BookData();
+		BookData bookData = null;
+		Configuration con = new Configuration().configure().addAnnotatedClass(BookData.class);
+		SessionFactory sf = con.buildSessionFactory();
+		Session session = sf.openSession();
+		Transaction tran = session.beginTransaction();
+		Query query = session.createQuery("From BookData WHERE id="+bookId);
+		List<BookData> list = (List<BookData>)query.list();
+		if(!list.isEmpty()) {
+			bookData = list.get(0);
+		}
+		tran.commit();
+		session.close();
+		
+		return bookData;
+		/*
 		Connection con = null;
 		Statement stm = null;
 		ResultSet rs = null;
@@ -91,12 +115,21 @@ public class GetBookFromDB {
 				e.printStackTrace();
 			}
 		}
-		
-		return data;
+		*/
 	}
 	
-	public ArrayList<BookData> getAllBooksOfUser(double userId){
+	public ArrayList<BookData> getAllBooksOfUser(int userId){
 		ArrayList<BookData> allBooksOfUser = new ArrayList<BookData>();
+		Configuration con = new Configuration().configure().addAnnotatedClass(BookData.class);
+		SessionFactory sf = con.buildSessionFactory();
+		Session session = sf.openSession();
+		Transaction tran = session.beginTransaction();
+		Query query = session.createQuery("From BookData WHERE idOfUser="+userId);
+		allBooksOfUser = (ArrayList<BookData>)query.list();
+		tran.commit();
+		session.close();
+		return allBooksOfUser;
+		/*
 		Connection connection = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -133,11 +166,19 @@ public class GetBookFromDB {
 				e.printStackTrace();
 			}
 		}
-		
-		return allBooksOfUser;
+		*/
 	}
 	
-	public void removeBookById(double bookId){
+	public void removeBookById(int bookId){
+		Configuration con = new Configuration().configure().addAnnotatedClass(BookData.class);
+		SessionFactory sf = con.buildSessionFactory();
+		Session session = sf.openSession();
+		Transaction tran = session.beginTransaction();
+		Query query = session.createQuery("DELETE FROM BookData WHERE id="+bookId);
+		query.executeUpdate();
+		tran.commit();
+		session.close();
+		/*
 		Connection connection = null;
 		Statement statement = null;
 		String sql="Delete from book_data where id="+bookId;
@@ -158,5 +199,6 @@ public class GetBookFromDB {
 				e.printStackTrace();
 			}
 		}
+		*/
 	}
 }
