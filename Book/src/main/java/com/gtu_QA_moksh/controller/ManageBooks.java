@@ -32,7 +32,7 @@ public class ManageBooks {
 	}
 	
 	@RequestMapping(value="removeBook")
-	public ModelAndView updateBookData(HttpSession session , HttpServletRequest request) {
+	public ModelAndView removeBook(HttpSession session , HttpServletRequest request) {
 		ModelAndView mv = null;
 		int bookId = Integer.parseInt(request.getParameter("idOfBook"));
 		
@@ -40,6 +40,17 @@ public class ManageBooks {
 		bookService.removeBookFromDbById(bookId);
 		
 		mv = manageBooks(session);
+		return mv;
+	}
+	
+	@RequestMapping(value="updateBookData")
+	public ModelAndView updateBookData(HttpServletRequest request) {
+		int bookId = Integer.parseInt(request.getParameter("idOfBook"));
+		BookService service = new BookService();
+		BookData bookData = service.getBookDetails(bookId);
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/AllJsp/UpdateBookData");
+		mv.addObject("bookData",bookData);
 		return mv;
 	}
 }

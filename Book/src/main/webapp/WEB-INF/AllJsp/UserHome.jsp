@@ -18,7 +18,6 @@
 				userData = (UserData)session.getAttribute("userData");
 			}
 		%>
-		
 		<%="Welcome  "+userData.getFirstName()+" "+userData.getLastName()%>
 		<br><br><br><br>
 		<form action="uploadBook" method="post">

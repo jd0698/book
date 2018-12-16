@@ -26,6 +26,12 @@ tr:nth-child(even) {
 </style>
 </head>
 <body>
+	<br>
+	<form action="homePage">
+		<input type="hidden" name="pageKey" value="ShowAllBooks"/>
+		<input type="submit" value="Home Page"/>
+	</form>
+	<br><br>
 	<% ArrayList<BookData> listOfAllBooksByUser = (ArrayList<BookData>)request.getAttribute("listOfAllBooksByUser");
 		if(listOfAllBooksByUser.isEmpty()){
 	%>

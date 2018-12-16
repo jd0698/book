@@ -16,14 +16,17 @@ public class UploadBookData {
 
 	@RequestMapping(value="uploadBook" , method=RequestMethod.POST)
 	public ModelAndView uploadBook() {
-		return new ModelAndView("WEB-INF/AllJsp/UploadBook");
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/AllJsp/UploadBook");
+		mv.addObject("bookData",new BookData());
+		return mv;
 	}
 	
 	@RequestMapping(value="saveBookData" , method=RequestMethod.POST)
 	public ModelAndView submitBookData(HttpServletRequest request, HttpServletResponse response) {
 		BookData bookData = new BookData();
-		bookData.setTitle(request.getParameter("bookTitle"));
-		bookData.setAuthor(request.getParameter("authorName"));
+		bookData.setTitle(request.getParameter("title"));
+		bookData.setAuthor(request.getParameter("author"));
 		bookData.setPubYear(request.getParameter("pubYear"));
 		bookData.setAdditionalInfo(request.getParameter("additionalInfo"));
 		bookData.setBookCondition(request.getParameter("bookCondition"));

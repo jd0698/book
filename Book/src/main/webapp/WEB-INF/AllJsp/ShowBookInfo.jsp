@@ -17,6 +17,12 @@ th, td {
 </style>
 </head>
 <body>
+	<br>
+	<form action="homePage">
+		<input type="hidden" name="pageKey" value="showBookInfo"/>
+    	<input type="submit" value="Home Page" />
+	</form>
+	<br><br><br>
 	<% BookData bookData = (BookData)request.getAttribute("bookDetails");%>
 		
 		
@@ -46,11 +52,6 @@ th, td {
     		<td><%=bookData.getAddress()%></td>
   		</tr>
 	</table>
-	<br><br><br><br>
-	<form action="homePage">
-		<input type="hidden" name="pageKey" value="showBookInfo"/>
-    	<input type="submit" value="Home Page" />
-	</form>
 	
 </body>
 </html>

@@ -50,12 +50,13 @@ public class Login {
 			mv.addObject("userData",userData);
 		}else {
 			mv.setViewName("UserLoginRegister");
+			//mv.setViewName("redirect:/homePage");
 		}
 		
 		return mv;
 	}
 
-	@RequestMapping(value="homePage")
+	@RequestMapping(value="homePage")				//send User to home page from other jsp
 	public ModelAndView userHomePage() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/AllJsp/UserHome");
