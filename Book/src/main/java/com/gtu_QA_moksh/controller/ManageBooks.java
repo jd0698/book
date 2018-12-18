@@ -25,7 +25,7 @@ public class ManageBooks {
 		
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/AllJsp/ShowAllBooksOfUser");
+		mv.setViewName("ShowAllBooksOfUser");
 		mv.addObject("listOfAllBooksByUser", listOfAllBooksByUser);
 		
 		return mv;
@@ -49,7 +49,7 @@ public class ManageBooks {
 		BookService service = new BookService();
 		BookData bookData = service.getBookDetails(bookId);
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/AllJsp/UpdateBookData");
+		mv.setViewName("UpdateBookData");
 		mv.addObject("bookData",bookData);
 		return mv;
 	}

@@ -17,7 +17,7 @@ public class UploadBookData {
 	@RequestMapping(value="uploadBook" , method=RequestMethod.POST)
 	public ModelAndView uploadBook() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/AllJsp/UploadBook");
+		mv.setViewName("UploadBook");
 		mv.addObject("bookData",new BookData());
 		return mv;
 	}
@@ -36,6 +36,6 @@ public class UploadBookData {
 		BookService service = new BookService();
 		service.saveBookData(bookData);
 		
-		return new ModelAndView("WEB-INF/AllJsp/UserHome");
+		return new ModelAndView("UserHome");
 	}
 }

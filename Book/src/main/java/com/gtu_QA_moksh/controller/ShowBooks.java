@@ -22,7 +22,7 @@ public class ShowBooks {
 		listOfAllBooks = bookService.getAllBooksFromDb();
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/AllJsp/ShowAllBooks");
+		mv.setViewName("ShowAllBooks");
 		mv.addObject("listOfAllBooks", listOfAllBooks);
 		
 		return mv;
@@ -35,7 +35,7 @@ public class ShowBooks {
 		BookData bookDetails = bookService.getBookDetails(bookId);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/AllJsp/ShowBookInfo");
+		mv.setViewName("ShowBookInfo");
 		mv.addObject("bookDetails", bookDetails);
 		
 		return mv;

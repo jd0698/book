@@ -26,9 +26,9 @@ public class Login {
 		ModelAndView mv = new ModelAndView();
 		
 		if(service.verify(adminData)) {
-			mv.setViewName("WEB-INF/AllJsp/AdminHomePage");
+			mv.setViewName("AdminHomePage");
 		}else {
-			mv.setViewName("WEB-INF/AllJsp/AdminLogin");
+			mv.setViewName("AdminLogin");
 		}
 		return mv;
 	}
@@ -46,7 +46,7 @@ public class Login {
 		UserData userData = service.verify(data);
 		
 		if(userData != null) {
-			mv.setViewName("WEB-INF/AllJsp/UserHome");
+			mv.setViewName("UserHome");
 			mv.addObject("userData",userData);
 		}else {
 			mv.setViewName("UserLoginRegister");
@@ -59,7 +59,7 @@ public class Login {
 	@RequestMapping(value="homePage")				//send User to home page from other jsp
 	public ModelAndView userHomePage() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/AllJsp/UserHome");
+		mv.setViewName("UserHome");
 		return mv;
 	}
 	
@@ -68,6 +68,14 @@ public class Login {
 		ModelAndView mv = new ModelAndView();
 		session.removeAttribute("userData");			//remove user Data from session when logout
 		mv.setViewName("UserLoginRegister");
+		return mv;
+	}
+	
+	@RequestMapping(value="UserLoginRegister")
+	public ModelAndView userLoginRegister() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("UserLoginRegister");
+		mv.addObject("userDataRegForm", new UserData());
 		return mv;
 	}
 }
