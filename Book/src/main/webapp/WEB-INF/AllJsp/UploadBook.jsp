@@ -17,7 +17,7 @@
 	<br><br>
 <% UserData userData = (UserData)session.getAttribute("userData");%>
 
-	<f:form action="saveBookData" method="post" modelAttribute="bookData">
+	<f:form action="saveBookData" method="post" modelAttribute="bookDataForm">
 		<input type="hidden" name="pageKey" value="UploadBook"/>
 		<f:hidden path="idOfUser" value="<%=userData.getId()%>"/>
 		<table>

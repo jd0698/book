@@ -61,7 +61,7 @@ tr:nth-child(even) {
 				    		<input type="hidden" name="idOfBook" value="<%=book.getId()%>"/>
 				    		<input type="submit" value="Remove Book"/>
 				    	</form>
-				    	<form action="updateBookData">
+				    	<form action="updateBookDataPage">
 				    		<input type="hidden" name="idOfBook" value="<%=book.getId()%>"/>
 				    		<input type="submit" value="Update Book Data"/>
 				    	</form>

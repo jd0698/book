@@ -32,4 +32,9 @@ public class BookService {
 		GetBookFromDB db = new GetBookFromDB();
 		db.removeBookById(bookId);
 	}
+	
+	public void updateBookDetails(BookData bookDataUpdateForm) {
+		GetBookFromDB db = new GetBookFromDB();
+		db.updateBookDetails(bookDataUpdateForm);
+	}
 }

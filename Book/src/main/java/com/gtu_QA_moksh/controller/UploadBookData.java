@@ -1,9 +1,7 @@
 package com.gtu_QA_moksh.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,24 +16,14 @@ public class UploadBookData {
 	public ModelAndView uploadBook() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("UploadBook");
-		mv.addObject("bookData",new BookData());
+		mv.addObject("bookDataForm",new BookData());
 		return mv;
 	}
 	
 	@RequestMapping(value="saveBookData" , method=RequestMethod.POST)
-	public ModelAndView submitBookData(HttpServletRequest request, HttpServletResponse response) {
-		BookData bookData = new BookData();
-		bookData.setTitle(request.getParameter("title"));
-		bookData.setAuthor(request.getParameter("author"));
-		bookData.setPubYear(request.getParameter("pubYear"));
-		bookData.setAdditionalInfo(request.getParameter("additionalInfo"));
-		bookData.setBookCondition(request.getParameter("bookCondition"));
-		bookData.setAddress(request.getParameter("address"));
-		bookData.setIdOfUser(Integer.parseInt(request.getParameter("idOfUser")));
-		
+	public ModelAndView submitBookData(@ModelAttribute() BookData bookDataForm) {
 		BookService service = new BookService();
-		service.saveBookData(bookData);
-		
+		service.saveBookData(bookDataForm);
 		return new ModelAndView("UserHome");
 	}
 }

@@ -17,16 +17,6 @@ Enter password:<input type="password" name="password"></input><br>
 
 <br><br><br><br><br><br> 
 
-<%-- <form action="registerUser" method="post"> --%>
-<!-- <!-- <input type="hidden" name="pageKey" value="UserLoginRegister"/> --> 
-<!-- Enter First Name:<input type="text" name="firstName"></input><br> -->
-<!-- Enter Last Name:<input type="text" name="lastName"></input><br> -->
-<!-- Enter Email:<input type="text" name="email"></input><br> -->
-<!-- Enter password:<input type="password" name="password"></input><br> -->
-<!-- Enter Number:<input type="text" name="number"></input> -->
-<!-- <input type="submit" value="Register"></input> -->
-<%-- </form> --%>
-
 	<f:form modelAttribute="userDataRegForm" action="registerUser" method="post">
 		<table>
 			<tr>

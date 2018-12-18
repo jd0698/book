@@ -68,6 +68,7 @@ public class Login {
 		ModelAndView mv = new ModelAndView();
 		session.removeAttribute("userData");			//remove user Data from session when logout
 		mv.setViewName("UserLoginRegister");
+		mv.addObject("userDataRegForm", new UserData());
 		return mv;
 	}
 	

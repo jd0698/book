@@ -18,7 +18,7 @@
 	</form>
 	<br><br>
 	
-<form:form action="saveBookData" method="post" modelAttribute="bookData">
+<form:form action="updateBookData" method="post" modelAttribute="bookDataUpdateForm">
 	<input type="hidden" name="pageKey" value="UploadBookData"/>
 	<form:hidden path="idOfUser"/>
 	<table>
