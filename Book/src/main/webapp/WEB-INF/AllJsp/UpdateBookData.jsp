@@ -18,24 +18,6 @@
 	</form>
 	<br><br>
 	
-<%-- <form action="saveBookData" method="post"> --%>
-<!-- 	<input type="hidden" name="pageKey" value="UploadBook"/> -->
-<%-- 	<input type="hidden" name="idOfUser" value="<%=userData.getId()%>"/> --%>
-<%-- 	Enter Title:<input type="text" name="bookTitle" value=<%=bookData.getTitle()%>/><br> --%>
-<!-- 	Enter Name of Author:<input type="text" name="authorName"><br> -->
-<!-- 	Publication Year:<input type="text" name="pubYear"><br> -->
-<!-- 	Additional Info:<textarea name="additionalInfo" rows="10" cols="30"></textarea><br> -->
-<!-- 	Book Condition:<input type="radio" name="bookCondition" value="Fine" checked> Fine  -->
-<!--   					<input type="radio" name="bookCondition" value="As New"> As New  -->
-<!--   					<input type="radio" name="bookCondition" value="Good"> Good  -->
-<!-- 					<input type="radio" name="bookCondition" value="Poor"> Poor<br> -->
-<!-- 	Address:<textarea name="address" rows="4" cols="20"></textarea><br> -->
-<!-- 	<input type="reset"/> -->
-<!-- 	<input type="submit" value="Submit"/> -->
-<%-- </form> --%>
-
-<!-- <br><br><br><br> -->
-
 <form:form action="saveBookData" method="post" modelAttribute="bookData">
 	<input type="hidden" name="pageKey" value="UploadBookData"/>
 	<form:hidden path="idOfUser"/>

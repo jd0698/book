@@ -71,7 +71,7 @@ public class Login {
 		return mv;
 	}
 	
-	@RequestMapping(value="UserLoginRegister")
+	@RequestMapping(value="goToMainPage")
 	public ModelAndView userLoginRegister() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("UserLoginRegister");

@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="UserLoginRegister">Take me to Home Page</a>
+	<a href="goToMainPage">Take me to Main Page</a>
 </body>
 </html>
