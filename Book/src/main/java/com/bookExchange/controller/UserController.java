@@ -3,6 +3,7 @@ package com.bookExchange.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,34 +23,33 @@ public class UserController {
 //		mv.setViewName("redirect:/goToMainPage");
 //		mv.addObject("userDataRegForm",new UserDataVO());
 //		return mv;
-		return "redirect:/goToMainPage";
+		return "redirect:/mainPage";
 	}
 	
 	@RequestMapping(value="verifyUser",method=RequestMethod.POST)
-	public ModelAndView verifyUser(@RequestParam("email") String email , @RequestParam("password") String password) {
+	public String verifyUser(HttpSession session,@RequestParam("email") String email , @RequestParam("password") String password , @RequestParam("pageKey") String pageKey , Model model) {
+		String page;
 		UserService service = new UserService();
 		UserDataVO data = new UserDataVO();
 		data.setEmail(email);
 		data.setPassword(password);
-		ModelAndView mv = new ModelAndView();
-		UserDataVO userData = service.verifyUser(data);
+		UserDataVO userData = service.verifyUser(data);	
+
+		session.setAttribute("pageKey", pageKey);
 		
 		if(userData != null) {
-			mv.setViewName("UserHome");
-			mv.addObject("userData",userData);
+			page = "redirect:/homePage";
+			session.setAttribute("userData",userData);
 		}else {
-			mv.setViewName("UserLoginRegister");
-			mv.addObject("userDataRegForm",new UserDataVO());
-			//mv.setViewName("redirect:/homePage");
+			page = "redirect:/UserLoginRegister";
+			session.setAttribute("userDataRegForm",new UserDataVO());
 		}
-		return mv;
+		return page;
 	}
 	
-	@RequestMapping(value="homePage")				//send User to home page from other jsp
-	public ModelAndView userHomePage() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("UserHome");
-		return mv;
+	@RequestMapping(value="homePage")			//send User to home page from other jsp
+	public String userHomePage() {
+		return "UserHome";
 	}
 	
 	@RequestMapping(value="logout")
@@ -61,8 +61,8 @@ public class UserController {
 		return mv;
 	}
 	
-	@RequestMapping(value="goToMainPage")
-	public ModelAndView userLoginRegister() {
+	@RequestMapping(value="mainPage")
+	public ModelAndView mainPage() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("UserLoginRegister");
 		mv.addObject("userDataRegForm", new UserDataVO());

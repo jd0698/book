@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.bookExchange.service.BookService;
@@ -53,6 +52,11 @@ public class BookController {
 		return mv;
 	}
 	
+//	@RequestMapping(value="showAllBooksOfUser")
+//	public String showAllBooksOfUser() {
+//		return "ShowAllBooksOfUser";
+//	}
+	
 	@RequestMapping(value="updateBookData")
 	public ModelAndView updateBookData(@ModelAttribute BookDataVO bookDataUpdateForm , HttpSession session) {
 		System.out.println(bookDataUpdateForm.getId());
@@ -88,7 +92,7 @@ public class BookController {
 		return mv;
 	}
 	
-	@RequestMapping(value="uploadBook" , method=RequestMethod.POST)
+	@RequestMapping(value="uploadBook")
 	public ModelAndView uploadBook() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("UploadBook");
@@ -97,13 +101,9 @@ public class BookController {
 	}
 	
 	@RequestMapping(value="saveBookData" , method=RequestMethod.POST)
-	public ModelAndView submitBookData(@ModelAttribute() BookDataVO bookDataForm,@RequestParam String pageKey) {
+	public String submitBookData(@ModelAttribute() BookDataVO bookDataForm) {
 		BookService service = new BookService();
 		service.saveBookData(bookDataForm);
-//		return new ModelAndView("UserHome");
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/homePage");
-		mv.addObject("pageKey",pageKey);
-		return mv;
+		return "redirect:/homePage";		//		return new ModelAndView("UserHome");
 	}
 }

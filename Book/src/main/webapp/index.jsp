@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="goToMainPage">Take me to Main Page</a>
+	<a href="mainPage">Take me to Main Page</a>
 </body>
 </html>

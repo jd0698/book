@@ -13,13 +13,13 @@
 
 	<br>
 	<form action="homePage">
-		<input type="hidden" name="pageKey" value="ShowAllBooks"/>
+<!-- 		<input type="hidden" name="pageKey" value="ShowAllBooks"/> -->
 		<input type="submit" value="Home Page"/>
 	</form>
 	<br><br>
 	
 <form:form action="updateBookData" method="post" modelAttribute="bookDataUpdateForm">
-	<input type="hidden" name="pageKey" value="UploadBookData"/>
+<!-- 	<input type="hidden" name="pageKey" value="UploadBookData"/> -->
 	<form:hidden path="idOfUser"/>
 	<form:hidden path="id"/>
 	<table>

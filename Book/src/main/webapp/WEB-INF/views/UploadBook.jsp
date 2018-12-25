@@ -1,6 +1,7 @@
 <%@page import="com.bookExchange.model.UserDataVO"%>
 <%@taglib prefix="f" uri="http://www.springframework.org/tags/form"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,15 +12,13 @@
 
 	<br>
 	<form action="homePage">
-		<input type="hidden" name="pageKey" value="UploadBook"/>
+<!-- 		<input type="hidden" name="pageKey" value="UploadBook"/> -->
 		<input type="submit" value="Home Page"/>
 	</form>
 	<br><br>
-<% UserDataVO userData = (UserDataVO)session.getAttribute("userData");%>
-
 	<f:form action="saveBookData" method="post" modelAttribute="bookDataForm">
-		<input type="hidden" name="pageKey" value="UploadBook"/>
-		<f:hidden path="idOfUser" value="<%=userData.getId()%>"/>
+<!-- 		<input type="hidden" name="pageKey" value="UploadBook"/> -->
+		<f:hidden path="idOfUser" value="${sessionScope.userData.id}"/>
 		<table>
 			<tr>
 				<td>Enter Title:</td>

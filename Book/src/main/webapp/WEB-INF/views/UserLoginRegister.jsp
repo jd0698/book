@@ -8,12 +8,13 @@ pageEncoding="ISO-8859-1"%>
 <title>Book Exchange.com</title>
 </head>
 <body>
-<form action="verifyUser" method="post">
-<input type="hidden" name="pageKey" value="UserLoginRegister"/>
-Enter email:<input type="text" name="email"></input><br>
-Enter password:<input type="password" name="password"></input><br>
-<input type="submit" value="Log In"></input>
-</form>
+
+ 	<form action="verifyUser" method="post">
+		<input type="hidden" name="pageKey" value="UserLoginRegister"/>
+		Enter email:<input type="text" name="email"></input><br>
+		Enter password:<input type="password" name="password"></input><br>
+		<input type="submit" value="Log In"></input>
+	</form>
 
 <br><br><br><br><br><br> 
 
@@ -21,8 +22,7 @@ Enter password:<input type="password" name="password"></input><br>
 		<table>
 			<tr>
 				<td>Enter First Name:</td>
-				<td><input type="text" name="firstName"></td>
-				<%-- <td><f:input path="firstName"/></td> --%>		
+				<td><f:input path="firstName"/></td>		
 			</tr>
 			<tr>
 				<td>Enter Last Name:</td>

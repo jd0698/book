@@ -1,5 +1,5 @@
 <%@page import="com.bookExchange.model.BookDataVO"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,37 +19,35 @@ th, td {
 <body>
 	<br>
 	<form action="homePage">
-		<input type="hidden" name="pageKey" value="showBookInfo"/>
+<!-- 		<input type="hidden" name="pageKey" value="showBookInfo"/> -->
     	<input type="submit" value="Home Page" />
 	</form>
 	<br><br><br>
-	<% BookDataVO bookData = (BookDataVO)request.getAttribute("bookDetails");%>
-		
 		
 	<table style="width:60%">
   		<tr>
     		<th>Title:</th>
-    		<td><%=bookData.getTitle()%></td>
+    		<td>${requestScope.bookDetails.title}</td>
   		</tr>
   		<tr>
     		<th>Author:</th>
-    		<td><%=bookData.getAuthor()%></td>
+    		<td>${requestScope.bookDetails.author}</td>
   		</tr>
   		<tr>
     		<th>Publication Year:</th>
-    		<td><%=bookData.getPubYear()%></td>
+    		<td>${requestScope.bookDetails.pubYear}</td>
   		</tr>
   		<tr>
     		<th>Book Condition:</th>
-    		<td><%=bookData.getBookCondition()%></td>
+    		<td>${requestScope.bookDetails.bookCondition}</td>
   		</tr>
   		<tr>
     		<th>Additional Info:</th>
-    		<td><%=bookData.getAdditionalInfo()%></td>
+    		<td>${requestScope.bookDetails.additionalInfo}</td>
   		</tr>
   		<tr>
     		<th>Available @</th>
-    		<td><%=bookData.getAddress()%></td>
+    		<td>${requestScope.bookDetails.address}</td>
   		</tr>
 	</table>
 	
