@@ -41,7 +41,7 @@ public class UserController {
 			page = "redirect:/homePage";
 			session.setAttribute("userData",userData);
 		}else {
-			page = "redirect:/UserLoginRegister";
+			page = "redirect:/mainPage";
 			session.setAttribute("userDataRegForm",new UserDataVO());
 		}
 		return page;
